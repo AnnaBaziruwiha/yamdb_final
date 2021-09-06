@@ -82,14 +82,13 @@ class UserViewSet(viewsets.ModelViewSet):
     def me(self, request):
         if request.method == 'GET':
             serializer = UserSerializer(request.user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
         elif request.method == 'PATCH':
             serializer = UserSerializer(
                 request.user, data=request.data, partial=True
             )
             serializer.is_valid(raise_exception=True)
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class ListCreateViewSet(viewsets.GenericViewSet,
@@ -143,8 +142,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
         if title_id is None:
             return self.queryset
         title = get_object_or_404(Title, pk=title_id)
-        queryset = title.reviews.all()
-        return queryset
+        return title.reviews.all()
 
     def perform_create(self, serializer):
         title = get_object_or_404(Title, pk=self.kwargs.get('title_id'))
@@ -164,8 +162,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         if review_id is None or title_id is None:
             return self.queryset
         review = get_object_or_404(Review, title__pk=title_id, pk=review_id)
-        queryset = review.comments.all()
-        return queryset
+        return review.comments.all()
 
     def perform_create(self, serializer):
         review = get_object_or_404(
