@@ -12,8 +12,6 @@ services:
   web:
     image: abzrwh/yamdb:latest
     restart: always
-    ports:
-      - "5000:5000"
     volumes:
       - static_value:/code/static/
       - media_value:/code/media/
