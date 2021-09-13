@@ -1,6 +1,6 @@
 # YAMDB
 
-![Django-app workflow](https://github.com/AnnaBaziruwiha/yamdb_final/actions/workflows/main.yml/badge.svg)
+![Django-app workflow](https://github.com/AnnaBaziruwiha/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 
 ### Описание
 Проект YaMDb собирает отзывы (Review) пользователей на произведения (Titles). Произведению может быть присвоен жанр (Genre).
