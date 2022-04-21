@@ -2,66 +2,67 @@
 
 ![Django-app workflow](https://github.com/AnnaBaziruwiha/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 
-### Описание
-Проект YaMDb собирает отзывы (Review) пользователей на произведения (Titles). Произведению может быть присвоен жанр (Genre).
-Произведения делятся на категории: Книги, Фильмы, Музыка. Список категорий может быть расширен администратором.
+### Description
+This projects currently only supports Russian language.
+The YaMDb project allows users to write reviews to different titles. Titles can have a genre.
+Titles can be divided into categories: Books, Music, Films. The administrator can add other categories.
 
 
-### Технологии
+### Technologies
 Python 3.9.0
 Django 3.0.5
 gunicorn 20.0.4
 
-### Ресурсы
-**auth**: аутентификация
+### Resources
+**auth**: authentication
 
-**users**: пользователи
+**users**: users
 
-**titles**: произведения, к которым пишут отзывы
+**titles**: items to review
 
-**categories**: категории произведений
+**categories**: titles categories
 
-**genres**: жанры произведений
+**genres**: titles genres
 
-**reviews**: отзывы на произведения
+**reviews**: reviews
 
-**comments**: комментарии к отзыву
+**comments**: comments for reviews
 
-### Запуск проекта в dev-режиме
-- Создайте в корне проекта файл .env и пропишите в нем следующие переменные окружения:
+### Deploy the project in developer mode
+- Create the .env file in the root of the project and fill it with the following data:
 ```sh
-DB_ENGINE # укажите, какая подсистема хранения будет использоваться
-DB_NAME # имя базы данных
-POSTGRES_USER # логин для подключения к базе данных
-POSTGRES_PASSWORD # пароль для подключения к базе данных
-DB_HOST # название сервиса
-DB_PORT # порт для подключения к базе данных
+DB_ENGINE # database
+DB_NAME # database's name
+POSTGRES_USER # database login
+POSTGRES_PASSWORD # database password
+DB_HOST # service name
+DB_PORT # database port
 ```
-- Находясь в директории проекта, запустите docker-compose:
+- Run docker-compose in the project's directory:
 ```sh
 docker-compose up -d
 ```
-- Соберите статику проекта в папку static
+- Collect the project's static files in the static folder:
 ```sh
 docker-compose exec web python manage.py collectstatic
 ```
-- Выполните миграции в два этапа:
+- Make migrations in two stages:
 ```sh
 docker-compose exec web python manage.py migrate auth
 docker-compose exec web python manage.py migrate --run-syncdb
 ```
-- Создайте суперпользователя
+- Create a superuser:
 ```sh
 docker-compose exec web python manage.py createsuperuser
 ```
-- Заполните базу начальными данными
+- Fill the database with initial data:
 ```sh
 docker-compose exec web python manage.py loaddata fixtures.json
 ```
 
-### Контакты
-Еще больше моих проектов ищите [тут](https://github.com/AnnaBaziruwiha)
+### Contacts
+Check out more of my projects [here](https://github.com/AnnaBaziruwiha)
 
-Предложения и пожелания пишите [сюда](abaziruwiha@gmail.com)
+You can send suggestions and requests to [this mail](abaziruwiha@gmail.com)
 
-Мой [linkedin](https://www.linkedin.com/in/annabaziruwiha/)
+My [linkedin](https://www.linkedin.com/in/annabaziruwiha/)
